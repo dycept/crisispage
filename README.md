@@ -11,6 +11,8 @@ away from your own IT. Set it up *before* you need it.
 - **Readers** (customers, press, partners, authorities) read it and check that it is genuine.
 - **Reviewers** audit the code before use. It is a single Python file you can read in under an hour.
 
+![Example of the CrisisPage web view populated with sample data](screenshot.png)
+
 ## Principles
 
 1. **No login, no web admin.** There is nothing to log in to. Statements are created locally on the command line.
