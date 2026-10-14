@@ -1,0 +1,24 @@
+# English - the reference language. To add a language: copy this file to i18n/<code>.toml,
+# translate the values (keep every key and every {placeholder}), then add the code to
+# "languages" in config.toml.
+# Placeholders: {org} in title/heading/default_intro; {link} (exactly once) in credits;
+# {day} {month} {year} {hour} {minute} in date_format. All other texts take none.
+name                 = "English"
+dir                  = "ltr"
+title                = "{org} - Official information"
+heading              = "Official information from {org}"
+default_intro        = "On this page {org} publishes official information about a current incident. The latest update is at the top."
+contact              = "Contact for enquiries"
+phone                = "Phone"
+last_updated         = "Last updated"
+no_updates           = "There are currently no updates."
+feed                 = "Subscribe to RSS feed"
+not_translated       = "This update is not yet available in English."
+legal                = "Legal notice / Imprint"
+legal_not_translated = "This legal notice is not yet available in English."
+back                 = "Back to the updates"
+verify               = "The address of this page is officially published here:"
+credits              = "Powered by {link}"
+footer               = "This page uses no scripts, cookies or trackers."
+date_format          = "{day} {month} {year}, {hour}:{minute}"
+months               = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]

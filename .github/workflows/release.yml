@@ -1,0 +1,45 @@
+name: release
+# Publishes a build of YOUR site (config.toml + updates/ from this repository) as a GitHub release
+# with SHA-256 hashes. Start it by pushing a tag, after you have published the statement:
+#   git tag build-20261012-2341 && git push origin build-20261012-2341
+on:
+  push:
+    tags: ["build-*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: python -m unittest
+      - name: Build the site
+        run: python3 crisis.py build
+      - name: Package and hash
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          [[ "$TAG" =~ ^[A-Za-z0-9._-]+$ ]]
+          mkdir dist
+          archive="crisispage-site-${TAG}.tar.gz"
+          # Reproducible archive: fixed order, owner and timestamps, no gzip header time.
+          tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner \
+              -C public -cf - . | gzip -n -9 > "dist/${archive}"
+          (cd dist && sha256sum "${archive}" > "${archive}.sha256")
+          cp public/SHA256SUMS.txt dist/SHA256SUMS.txt
+          {
+            echo "Build hash (SHA-256 of SHA256SUMS.txt):"
+            echo
+            echo "    $(sha256sum public/SHA256SUMS.txt | cut -d' ' -f1)"
+            echo
+            echo "Verify: unpack the archive, then run \`sha256sum -c SHA256SUMS.txt\` inside it."
+          } > notes.md
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: gh release create "$TAG" dist/* --verify-tag --title "$TAG" --notes-file notes.md

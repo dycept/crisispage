@@ -1,0 +1,21 @@
+# Português - DRAFT: not yet reviewed by a native speaker. Please review before relying on it.
+# European Portuguese spelling. Copy to pt-br.toml and adapt for Brazilian Portuguese.
+name                 = "Português"
+dir                  = "ltr"
+title                = "{org} – Informações oficiais"
+heading              = "Informações oficiais de {org}"
+default_intro        = "Nesta página, {org} publica informações oficiais sobre um incidente em curso. A comunicação mais recente aparece no topo."
+contact              = "Contacto para esclarecimentos"
+phone                = "Telefone"
+last_updated         = "Última atualização"
+no_updates           = "De momento não existem comunicações."
+feed                 = "Subscrever o feed RSS"
+not_translated       = "Esta comunicação ainda não está disponível em português."
+legal                = "Aviso legal"
+legal_not_translated = "Este aviso legal ainda não está disponível em português."
+back                 = "Voltar às comunicações"
+verify               = "O endereço desta página é divulgado oficialmente aqui:"
+credits              = "Criado com {link}"
+footer               = "Esta página não utiliza scripts, cookies nem rastreadores."
+date_format          = "{day} de {month} de {year}, {hour}:{minute}"
+months               = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
